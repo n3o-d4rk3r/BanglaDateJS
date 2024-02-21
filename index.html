@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বাংলা তারিখ, বার এবং সন প্রদর্শন</title>
+</head>
+<body>
+    <div id="banglaDate"></div>
+    <script>
+        function getBanglaDate() {
+            let currentDate = new Date();
+            const banglaMonths = ['বৈশাখ', 'জ্যৈষ্ঠ', 'আষাঢ়', 'শ্রাবণ', 'ভাদ্র', 'আশ্বিন', 'কার্তিক', 'অগ্রহায়ণ', 'পৌষ', 'মাঘ', 'ফাল্গুন', 'চৈত্র'];
+
+            let banglaDate = currentDate.getDate();
+            let banglaMonth = banglaMonths[currentDate.getMonth()];
+            let banglaYear = currentDate.getFullYear() + 593;
+
+            let banglaDateString = `${banglaDate} ${banglaMonth}, ${banglaYear}`;
+
+            let banglaDay = currentDate.toLocaleDateString('bn-BD', { weekday: 'long' });
+
+            return { date: banglaDateString, day: banglaDay };
+        }
+        window.onload = function() {
+            const banglaDateObj = getBanglaDate();
+            document.getElementById('banglaDate').innerHTML = `আজকের তারিখ: ${banglaDateObj.date}, বার: ${banglaDateObj.day}`;
+        };
+    </script>
+</body>
+</html>
